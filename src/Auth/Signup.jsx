@@ -4,20 +4,26 @@ import { useEffect } from 'react';
 
 function Signup() {
     useEffect(() => { 
-        console.log(process.env.REACT_APP_GOOGLE_API)
     }, [])
   return (
     <div>
+
+<div id="g_id_onload"
+         data-client_id="622326318804-l20465rf0cpuvf64vgfu6h21rh0cu6mf.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse">
+    </div>
+
         <h1>LOgin with google.</h1>
       <GoogleLogin
-       onFailure={e => { 
-        console.log("Authentication failed...")
-       }}
+       clientId={"704859039807-5u62qbrh11i5rq4bfgf62s93rq3skre0.apps.googleusercontent.com"}
+       buttonText="Log in with Google"
        onSuccess={e => { 
         console.log(e)
-        alert(e)
        }}
-       clientId={process.env.REACT_APP_GOOGLE_API}
+       onFailure={e => { 
+        console.log(e)
+       }}
+       cookiePolicy={'single_host_origin'}
         />
     </div>
   )
