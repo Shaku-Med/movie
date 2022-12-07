@@ -102,15 +102,27 @@ function App() {
 
             Cookies.remove("c_usr")
             localStorage.clear()
+
+           document.addEventListener("keydown", e => { 
+            if(e.ctrlKey && e.key){ 
+              e.preventDefault()
+            }
+           })
+
+           document.addEventListener("contextmenu", e => { 
+            e.preventDefault()
+           })
+
           });
           
           return ( 
             <div key={key}>
+              <title>Access Denied.</title>
               <div key={key} className="preloaders w-100">
             <img onError={e => { 
               alert("Unable to load image.")
             }} src="https://musicbackend.mohamedbrima.repl.co/Images/logo_free-file.png" alt="" />
-            <div className="welcome h1 text-center">Invalid Route...</div>
+            <div className="welcome h1 text-center">Access Denied.</div>
           </div>
             </div>
           )
