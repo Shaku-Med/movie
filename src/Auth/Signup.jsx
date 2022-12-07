@@ -1,7 +1,11 @@
 import React from 'react'
 import { GoogleLogin } from '@leecheuk/react-google-login';
+import { useEffect } from 'react';
 
 function Signup() {
+    useEffect(() => { 
+        console.log(process.env.REACT_APP_GOOGLE_API)
+    }, [])
   return (
     <div>
         <h1>LOgin with google.</h1>
@@ -13,7 +17,8 @@ function Signup() {
         console.log(e)
         alert(e)
        }}
-       clientId='265214283441-icvcsrmd994bedofe397f6rcrt097i1o.apps.googleusercontent.com' />
+       clientId={process.env.REACT_APP_GOOGLE_API}
+        />
     </div>
   )
 }
