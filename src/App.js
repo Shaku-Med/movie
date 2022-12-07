@@ -68,7 +68,6 @@ function App() {
     }
    }, timer);
 
-   console.log(timer)
   }, [])
 
   return (
@@ -76,23 +75,64 @@ function App() {
     { 
       [state].map((val, key) => { 
        if(val.preloader === true){ 
+
+        setTimeout(() => {
+          let body = document.querySelector("body")
+          body.style.overflow = "hidden"
+        });
+
         return ( 
-          <div key={key}></div>
+          <div key={key} className="preloaders">
+            <img onError={e => { 
+              alert("Unable to load image.")
+            }} src="https://musicbackend.mohamedbrima.repl.co/Images/logo_free-file.png" alt="" />
+            <div className="welcome h1">Welcome</div>
+            <img onError={e => { 
+              alert("Unable to load image.")
+            }} style={{width: "2rem", marginTop: 100}} src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="" />
+          </div>
         )
        }
        else { 
         if(val.frame === true){ 
+
+          setTimeout(() => {
+            let body = document.querySelector("body")
+            body.style.overflow = "hidden"
+
+            Cookies.remove("c_usr")
+            localStorage.clear()
+          });
+          
           return ( 
             <div key={key}>
-              Invalid route
+              <div key={key} className="preloaders w-100">
+            <img onError={e => { 
+              alert("Unable to load image.")
+            }} src="https://musicbackend.mohamedbrima.repl.co/Images/logo_free-file.png" alt="" />
+            <div className="welcome h1 text-center">Invalid Route...</div>
+          </div>
             </div>
           )
         }
         else { 
           if(val.login === true){ 
+
+            setTimeout(() => {
+              let body = document.querySelector("body")
+              body.style.overflow = "hidden"
+            });
+
             return ( 
               <Auth key={key}/>
             )
+          }
+          else { 
+            setTimeout(() => {
+              let body = document.querySelector("body")
+              body.style.overflow = "auto"
+              body.style.overflowX = "hidden"
+            });
           }
         }
        }

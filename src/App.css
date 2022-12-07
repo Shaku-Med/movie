@@ -1,38 +1,99 @@
-.App {
-  text-align: center;
+
+:root{ 
+  color-scheme: dark;
+  --mainbg: #fff;
+  --maincl: #14191f;
+  --smallcolor: #eaeeea;
+  --itembg: linear-gradient( #fff 15%, #21262d00 100% )
+
 }
 
-.App-logo {
-  height: 40vmin;
+body{ 
+  background: var(--mainbg);
+  color: var(--maincl);
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+html{ 
+  scroll-behavior: smooth;
+}
+
+* { 
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+* > a { 
+  color: var(--smallcolor);
+}
+
+.preloaders { 
+  position: relative;
+  top:0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  overflow: hidden;
+}
+
+.preloaders img { 
+  width: 5rem;
   pointer-events: none;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  animation: imgs 1s ease-in-out 1;
+}
+
+@keyframes imgs {
+  0% { 
+    opacity: 0;
+    top: 40%;
+  }
+}
+
+.welcome { 
+  pointer-events: none;
+  position: absolute;
+  top:58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  animation: txts 1.5s ease-in-out 1;
+}
+
+@keyframes txts {
+  0% { 
+    opacity: 0;
+    top: 50%;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+ 
+}
+
+@media (prefers-color-scheme: dark) {
+  :root{ 
+    color-scheme: dark;
+    --mainbg: #121212;
+    --maincl: #bcc3cd;
+    --smallcolor: #9ba4b0;
+    --itembg: linear-gradient( #1c2026 15%, #21262d00 100% )
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
