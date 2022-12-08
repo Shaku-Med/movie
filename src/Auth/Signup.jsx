@@ -4,8 +4,10 @@ import { useEffect } from "react";
 import { Form, InputGroup, FormText } from "react-bootstrap";
 import {v4 as uuid} from 'uuid'
 import axios from 'axios'
+import {Helmet} from "react-helmet";
 
-function Signup() {
+
+function Signup({socket}) {
     const [uname, setuname] = useState('')
     const [email, setemail] = useState('')
     const [pass, setpass] = useState('')
@@ -14,8 +16,18 @@ function Signup() {
 
     const [err, seterr] = useState('')
 
+    const [as, setas] = useState(0)
+
+
   useEffect(() => {
-   
+
+    axios.post("http://192.168.1.43:3002/session/key", { 
+      keys: uuid()
+    }).then(res =>{ 
+      if(res.data.success === "success"){ 
+        settoken(res.data.tokens)
+      }
+    })
 
      //Mouse movements...
      let side_part = document.querySelector(".side_part")
@@ -92,6 +104,43 @@ function Signup() {
         seterr("")
         let checking_information = document.querySelector(".checking_information")
         checking_information.classList.add("show_ers")
+
+        let datas = { 
+          usernames: uname,
+          email: email,
+          pass: pass,
+          c_usr: uuid(),
+          pageid: uuid(),
+          profilepic: 'https://static.rfstat.com/renderforest/images/v2/icons/profile-tumb-1.png',
+          coverpic: "",
+          xs: uuid(),
+          bagpo: "0",
+        }
+
+        socket.emit("storedtoken", token)
+
+        axios.post("http://192.168.1.43:3002/vivid", datas).then(res => { 
+          if(res.data.success === "success"){ 
+            sessionStorage.clear()
+          }
+          else { 
+            seterr("Error:" + res.data.success)
+
+            axios.post("http://192.168.1.43:3002/session/key", { 
+              keys: uuid()
+            }).then(res =>{ 
+              if(res.data.success === "success"){ 
+                settoken(res.data.tokens)
+              }
+            })
+
+            setTimeout(() => {
+              checking_information.classList.remove("show_ers")
+            }, 2000);
+          }
+        })
+
+
     }
     
 
@@ -99,7 +148,13 @@ function Signup() {
 
 
   return (
-    <div className="sign_ups">
+    <>
+
+      <Helmet>
+        <title>vTube | Sign up</title>
+      </Helmet>
+     
+        <div className="sign_ups">
       <div className="side_part">
         <div className="h1">Sign up</div>
       </div>
@@ -142,7 +197,20 @@ function Signup() {
             </div>
             <div className="col">
               <input onChange={e => setpass(e.target.value)} onPaste={e => e.preventDefault()} type="password" placeholder="password***" id="pass" />
-              <i className="fa fa-eye" id="eye"></i>
+              <i onClick={e => { 
+                let eye = document.getElementById("eye")
+                let passss = document.getElementById("pass")
+                if(as === 0){ 
+                  passss.type = "text"
+                  eye.setAttribute("class", "fa fa-eye-slash")
+                  setas(1)
+                }
+                else { 
+                  passss.type = "password"
+                  eye.setAttribute("class", "fa fa-eye")
+                  setas(0)
+                }
+              }} className="fa fa-eye" id="eye"></i>
 
               <div className="hovpass">
                 You must enter a secured password to complete your account
@@ -155,7 +223,9 @@ function Signup() {
             </div>
             <div className="col text-center">
               <b>Already have an account? </b>
-              <span className="text-primary" style={{ cursor: "pointer" }}>
+              <span onClick={e => { 
+               sessionStorage.clear()
+              }} className="text-primary" style={{ cursor: "pointer" }}>
                 Login.
               </span>
             </div>
@@ -169,6 +239,7 @@ function Signup() {
         </div> 
       </div>
     </div>
+    </>
   );
 }
 

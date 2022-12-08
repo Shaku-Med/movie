@@ -3,8 +3,22 @@ import { useEffect } from 'react';
 import Cookies from 'js-cookie'
 import './App.css';
 import Auth from './Auth/Auth';
+import {Helmet} from "react-helmet";
+import { Connection } from './Connection';
+import Routiing from './Routiing';
+import {HashRouter} from 'react-router-dom'
+import Audio from './Audio/Audio';
+import io from 'socket.io-client'
+import Nav from './Nav/Nav';
+import Owner from './Owner/Owner';
+
+let socket = new io("http://192.168.1.43:3002")
+
 
 function App() {
+
+  const [videosound, setvideosound] = useState('')
+  const [owner, setowner] = useState('')
 
   const [state, setstate] = useState({ 
     login: false,
@@ -28,8 +42,8 @@ function App() {
     }
     else { 
        setInterval(() => {
-        if(Cookies.get("c_usr") && localStorage.getItem("c_usr")){ 
-          if(Cookies.get("c_usr") !== null && localStorage.getItem("c_usr") !== null){ 
+        if(Cookies.get("c_usr") && localStorage.getItem("c_usr") && Cookies.get("xs")){ 
+          if(Cookies.get("c_usr") !== null && localStorage.getItem("c_usr") !== null && Cookies.get("xs") !== null){ 
             if(Cookies.get("c_usr") === localStorage.getItem("c_usr")){ 
               setstate({ 
                 login: false,
@@ -83,6 +97,11 @@ function App() {
 
         return ( 
           <div key={key} className="preloaders">
+
+        <Helmet>
+                <title>vTube | Loading...</title>
+              </Helmet>
+
             <img onError={e => { 
               alert("Unable to load image.")
             }} src="https://musicbackend.mohamedbrima.repl.co/Images/logo_free-file.png" alt="" />
@@ -140,11 +159,24 @@ function App() {
             )
           }
           else { 
+
+
             setTimeout(() => {
               let body = document.querySelector("body")
               body.style.overflow = "auto"
               body.style.overflowX = "hidden"
             });
+
+            return ( 
+              <Connection.Provider key={key} value={{videosound, setvideosound, owner, setowner}}>
+               <HashRouter>
+                  <Owner socket={socket}/>
+                  <Nav socket={socket}/>
+                  <Audio socket={socket}/>
+                  <Routiing/>
+               </HashRouter>
+            </Connection.Provider>
+            )
           }
         }
        }

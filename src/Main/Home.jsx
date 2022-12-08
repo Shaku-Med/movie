@@ -1,8 +1,14 @@
 import React from 'react'
+import {Helmet} from 'react-helmet'
 
 function Home() {
   return (
-    <div>Home</div>
+    <>
+      <Helmet>
+        <title>vTube</title>
+      </Helmet>
+      <div>Home page main.</div>
+    </>
   )
 }
 

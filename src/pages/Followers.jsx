@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Post() {
+function Followers() {
   return (
     <div>
-      Posting page.
+      Followers.
     </div>
   )
 }
 
-export default Post
+export default Followers
