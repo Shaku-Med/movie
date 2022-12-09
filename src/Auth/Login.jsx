@@ -153,6 +153,9 @@ function Login({socket}) {
             Cookies.set("c_usr", res.data.c_usr)
             Cookies.set("xs", res.data.xs)
             localStorage.setItem("c_usr", res.data.c_usr)
+            setTimeout(() => {
+              window.location.reload()
+            }, 10);
           }
           else { 
             seterr("Error:" + res.data.success)

@@ -28,6 +28,26 @@ function App() {
   })
 
   useEffect(() => { 
+    if(Cookies.get("c_usr") && localStorage.getItem("c_usr") && Cookies.get("xs")){ 
+      if(Cookies.get("c_usr") !== null && localStorage.getItem("c_usr") !== null && Cookies.get("xs") !== null){ 
+        if(Cookies.get("c_usr") === localStorage.getItem("c_usr")){ 
+          socket.on("allconnected", data => { 
+           if(data.success === "success"){ 
+            if(data.c_usr === Cookies.get("c_usr") && data.xs === Cookies.get("xs")){ 
+              localStorage.clear()
+              sessionStorage.clear()
+              Cookies.remove("c_usr")
+              Cookies.remove("xs")
+              window.location.reload()
+            }
+           }
+          })
+        }
+      }
+    }
+  }, [])
+
+  useEffect(() => { 
 
     let timer = Math.floor(Math.random() * 20000) - 10
 
@@ -172,7 +192,6 @@ function App() {
                <HashRouter>
                   <Owner socket={socket}/>
                   <Nav socket={socket}/>
-                  <Audio socket={socket}/>
                   <Routiing/>
                </HashRouter>
             </Connection.Provider>

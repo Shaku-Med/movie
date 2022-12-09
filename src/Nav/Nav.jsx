@@ -6,10 +6,6 @@ function Nav() {
 
     const {owner, setowner} = useContext(Connection)
 
-    useEffect(() => { 
-        console.log(owner)
-    }, [])
-
   return (
     <>
       { 
@@ -31,12 +27,6 @@ function Nav() {
                         }} className="navs_1">
                             <i className="fa fa-bank"></i>
                             <span>Account</span>
-                        </div>
-                        <div  onClick={e => { 
-                            window.open("../#/Followers", "_self")
-                        }}  className="navs_1">
-                            <i className="fa fa-users"></i>
-                            <span>Followers</span>
                         </div>
                         <div  onClick={e => { 
                             window.open("../#/Lib", "_self")
@@ -62,7 +52,7 @@ function Nav() {
                                     }
                                 })
                             }} id="drop_d" className="img_first">
-                                <img onError={e => { 
+                                <img style={{width: '2.5rem', height: '2.5rem'}} onError={e => { 
                                     e.target.src = "https://www.beds4backs.com.au/wp-content/uploads/2020/07/no-image-406x406.jpg"
                                 }} src={val.profilepic === "" ? "https://www.beds4backs.com.au/wp-content/uploads/2020/07/no-image-406x406.jpg": val.profilepic} alt="" />
                             </div>

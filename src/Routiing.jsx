@@ -6,7 +6,6 @@ import Home from './Main/Home'
 import Account from './pages/Account'
 import Chat from './pages/Chat'
 import Error from './pages/Error'
-import Followers from './pages/Followers'
 import Libary from './pages/Libary'
 import Preview from './pages/Preview'
 import User from './pages/User'
@@ -24,7 +23,6 @@ function Routiing() {
       <Route path='/watch/:id' element={<Preview socket={socket}/>}/>
       <Route path='/User/:id' element={<User socket={socket}/>}/>
       <Route path='/*' element={<Error socket={socket}/>}/>
-      <Route path='/Followers' element={<Followers socket={socket}/>}/>
       <Route path='/Upload' element={<Upload socket={socket}/>}/>
     </Routes>
   )

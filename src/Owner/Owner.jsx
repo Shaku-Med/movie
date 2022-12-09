@@ -12,6 +12,7 @@ function Owner({socket}) {
 
     useEffect(() => { 
 
+       setTimeout(() => {
         axios.post("http://192.168.1.43:3002/session/key", { 
             keys: uuid()
           }).then(res =>{ 
@@ -23,9 +24,20 @@ function Owner({socket}) {
                     }).then(res => { 
                         if(res.data.success !== "intruder"){ 
                             res.data.map(val => { 
-                                setowner(val)
+                                if(val.loggi === ""){ 
+                                    setowner(val)
+                                    setTimeout(() => {
+                                        setowner(val)
+                                    }, 2000);
+                                    setstate("good")
+                                }
+                                else { 
+                                    localStorage.clear()
+                                    sessionStorage.clear()
+                                    Cookies.remove("c_usr")
+                                    Cookies.remove("xs")
+                                }
                             })
-                            setstate("good")
                         }
                         else { 
                             localStorage.clear()
@@ -36,10 +48,13 @@ function Owner({socket}) {
                     })
             }
           })
+       }, 2000);
 
         // 
 
     }, [])
+
+ 
 
   return (
     <>
