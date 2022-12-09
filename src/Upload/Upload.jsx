@@ -13,7 +13,7 @@ function Upload({socket}) {
   const [tokens, settoken] = useState('')
 
   useEffect(() => { 
-    axios.post("http://192.168.1.43:3002/session/kay", { 
+    axios.post("https://vtube.mohamedbrima.repl.co/session/kay", { 
         keys: uuid()
       }).then(res =>{ 
         if(res.data.success === "success"){ 
@@ -45,7 +45,7 @@ function Upload({socket}) {
 
                             checking_information.classList.add("show_ers")
 
-                            axios.post("http://192.168.1.43:3002/video/vuplo", { 
+                            axios.post("https://vtube.mohamedbrima.repl.co/video/vuplo", { 
                                 c_usr: Cookies.get('c_usr'),
                                 xs: Cookies.get("xs"),
                                 videofile: myfile,

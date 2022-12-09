@@ -12,7 +12,7 @@ import io from 'socket.io-client'
 import Nav from './Nav/Nav';
 import Owner from './Owner/Owner';
 
-let socket = new io("http://192.168.1.43:3002")
+let socket = new io("https://vtube.mohamedbrima.repl.co")
 
 
 function App() {

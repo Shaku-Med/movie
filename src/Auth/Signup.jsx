@@ -21,7 +21,7 @@ function Signup({socket}) {
 
   useEffect(() => {
 
-    axios.post("http://192.168.1.43:3002/session/key", { 
+    axios.post("https://vtube.mohamedbrima.repl.co/session/key", { 
       keys: uuid()
     }).then(res =>{ 
       if(res.data.success === "success"){ 
@@ -119,14 +119,14 @@ function Signup({socket}) {
 
         socket.emit("storedtoken", token)
 
-        axios.post("http://192.168.1.43:3002/vivid", datas).then(res => { 
+        axios.post("https://vtube.mohamedbrima.repl.co/vivid", datas).then(res => { 
           if(res.data.success === "success"){ 
             sessionStorage.clear()
           }
           else { 
             seterr("Error:" + res.data.success)
 
-            axios.post("http://192.168.1.43:3002/session/key", { 
+            axios.post("https://vtube.mohamedbrima.repl.co/session/key", { 
               keys: uuid()
             }).then(res =>{ 
               if(res.data.success === "success"){ 

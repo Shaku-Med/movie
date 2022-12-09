@@ -66,12 +66,12 @@ function Account({socket}) {
               }
               else { 
 
-                axios.post("http://192.168.1.43:3002/session/key", { 
+                axios.post("https://vtube.mohamedbrima.repl.co/session/key", { 
                   keys: uuid()
                 }).then(res =>{ 
                   if(res.data.success === "success"){ 
                     socket.emit("storedtoken", res.data.tokens)
-                    axios.post("http://192.168.1.43:3002/user/update", { 
+                    axios.post("https://vtube.mohamedbrima.repl.co/user/update", { 
                       c_usr: Cookies.get("c_usr"),
                       xs: Cookies.get("xs"),
                       newname: name
@@ -124,12 +124,12 @@ function Account({socket}) {
               }
               else { 
 
-                axios.post("http://192.168.1.43:3002/session/key", { 
+                axios.post("https://vtube.mohamedbrima.repl.co/session/key", { 
                   keys: uuid()
                 }).then(res =>{ 
                   if(res.data.success === "success"){ 
                     socket.emit("storedtoken", res.data.tokens)
-                    axios.post("http://192.168.1.43:3002/user/bio", { 
+                    axios.post("https://vtube.mohamedbrima.repl.co/user/bio", { 
                       c_usr: Cookies.get("c_usr"),
                       xs: Cookies.get("xs"),
                       newname: bio
@@ -162,7 +162,7 @@ function Account({socket}) {
           <div onClick={e => { 
             if(window.confirm("You're about to logout of all the device this account is connected to immediately. Do you wish to take this action?") === true){ 
 
-              axios.post("http://192.168.1.43:3002/session/key", { 
+              axios.post("https://vtube.mohamedbrima.repl.co/session/key", { 
                   keys: uuid()
                 }).then(res =>{ 
                   if(res.data.success === "success"){ 
