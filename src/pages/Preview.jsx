@@ -54,8 +54,6 @@ function Preview({socket}) {
              });
          }
        });
-
-
       
 
    }, [id]);
@@ -81,10 +79,42 @@ function Preview({socket}) {
                           if(video.paused){ 
                             video.play()
                             e.target.setAttribute("class", "fa fa-pause")
+                             
+                             if ('mediaSession' in navigator) {
+                                navigator.mediaSession.metadata = new MediaMetadata({
+                                  title: v.usernames,
+                                  artist: 'Playing on vTube...',
+                                  album: 'Their is more on vTube',
+                                  artwork: [
+                                    { src: v.profilepic,   sizes: '96x96',   type: 'image/png' },
+                                    { src:  v.profilepic, sizes: '128x128', type: 'image/png' },
+                                    { src:  v.profilepic, sizes: '192x192', type: 'image/png' },
+                                    { src:  v.profilepic, sizes: '256x256', type: 'image/png' },
+                                    { src:  v.profilepic, sizes: '384x384', type: 'image/png' },
+                                    { src:  v.profilepic, sizes: '512x512', type: 'image/png' },
+                                  ]
+                                })};
+                             
                           }
                           else { 
                             video.pause()
                             e.target.setAttribute("class", "fa fa-play")
+                             
+                              if ('mediaSession' in navigator) {
+                                navigator.mediaSession.metadata = new MediaMetadata({
+                                  title: v.usernames,
+                                  artist: 'Playing on vTube...',
+                                  album: 'Their is more on vTube',
+                                  artwork: [
+                                    { src: v.profilepic,   sizes: '96x96',   type: 'image/png' },
+                                    { src:  v.profilepic, sizes: '128x128', type: 'image/png' },
+                                    { src:  v.profilepic, sizes: '192x192', type: 'image/png' },
+                                    { src:  v.profilepic, sizes: '256x256', type: 'image/png' },
+                                    { src:  v.profilepic, sizes: '384x384', type: 'image/png' },
+                                    { src:  v.profilepic, sizes: '512x512', type: 'image/png' },
+                                  ]
+                                })};
+                             
                           }
                         }} className="fa fa-play shadow" id="playbtn"></i>
                         <div className="container_main">
