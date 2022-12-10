@@ -72,12 +72,13 @@ function Upload({socket}) {
                           Upload Your video
                         </label>
                         <input
+                          multiple
                           accept="video/*"
                           type="file"
                           name=""
                           id="upbtn"
                           onChange={ async e => { 
-                            let file = e.target.files[0]
+                            let file = e.target.files
                             setmyfile(file)
                           }}
                         />
