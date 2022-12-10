@@ -40,7 +40,6 @@ function Preview({socket}) {
              .then((res) => {
                if (res.success !== "errs") {
                  setusr(res.data)
-                 console.log(res.data)
                  axios
                    .post("https://vtube.mohamedbrima.repl.co/videos/private", {
                      c_usr: Cookies.get("c_usr"),
