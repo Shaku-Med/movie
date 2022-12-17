@@ -6,7 +6,7 @@ import Auth from './Auth/Auth';
 import {Helmet} from "react-helmet";
 import { Connection } from './Connection';
 import Routiing from './Routiing';
-import {HashRouter} from 'react-router-dom'
+import {BrowserRouter} from 'react-router-dom'
 import Audio from './Audio/Audio';
 import io from 'socket.io-client'
 import Nav from './Nav/Nav';
@@ -189,11 +189,11 @@ function App() {
 
             return ( 
               <Connection.Provider key={key} value={{videosound, setvideosound, owner, setowner}}>
-               <HashRouter>
+               <BrowserRouter>
                   <Owner socket={socket}/>
                   <Nav socket={socket}/>
                   <Routiing/>
-               </HashRouter>
+               </BrowserRouter>
             </Connection.Provider>
             )
           }
