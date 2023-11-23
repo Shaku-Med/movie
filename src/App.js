@@ -124,7 +124,7 @@ function App() {
 
             <img onError={e => { 
               alert("Unable to load image.")
-            }} src="https://musicbackend.mohamedbrima.repl.co/Images/logo_free-file.png" alt="" />
+            }} src="../favicon.ico" alt="" />
             <div className="welcome h1">Welcome</div>
             <img onError={e => { 
               alert("Unable to load image.")
@@ -160,7 +160,7 @@ function App() {
               <div key={key} className="preloaders w-100">
             <img onError={e => { 
               alert("Unable to load image.")
-            }} src="https://musicbackend.mohamedbrima.repl.co/Images/logo_free-file.png" alt="" />
+            }} src="../favicon.ico" alt="" />
             <div className="welcome h1 text-center">Access Denied.</div>
           </div>
             </div>
