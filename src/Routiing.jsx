@@ -11,7 +11,7 @@ import Preview from './pages/Preview'
 import User from './pages/User'
 import Upload from './Upload/Upload'
 
-let socket = new io("https://vtube.mohamedbrima.repl.co")
+let socket = new io("https://s4qtq5-3002.csb.app")
 
 function Routiing() {
   return (

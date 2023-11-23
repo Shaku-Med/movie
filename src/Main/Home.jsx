@@ -13,14 +13,14 @@ function Home({ socket }) {
 
   useEffect(() => {
     axios
-      .post("https://vtube.mohamedbrima.repl.co/session/home", {
+      .post("https://s4qtq5-3002.csb.app/session/home", {
         keys: uuid(),
       })
       .then((res) => {
         if (res.data.success === "success") {
           socket.emit("homeus", res.data.tokens);
           axios
-            .post("https://vtube.mohamedbrima.repl.co/all/users", {
+            .post("https://s4qtq5-3002.csb.app/all/users", {
               c_usr: Cookies.get("c_usr"),
               xs: Cookies.get("xs"),
             })
@@ -28,7 +28,7 @@ function Home({ socket }) {
               if (res.success !== "errs") {
                 setusr(res.data)
                 axios
-                  .post("https://vtube.mohamedbrima.repl.co/videos/private", {
+                  .post("https://s4qtq5-3002.csb.app/videos/private", {
                     c_usr: Cookies.get("c_usr"),
                     xs: Cookies.get("xs"),
                   })

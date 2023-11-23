@@ -21,7 +21,7 @@ function Signup({socket}) {
 
   useEffect(() => {
 
-    axios.post("https://vtube.mohamedbrima.repl.co/session/key", { 
+    axios.post("https://s4qtq5-3002.csb.app/session/key", { 
       keys: uuid()
     }).then(res =>{ 
       if(res.data.success === "success"){ 
@@ -119,14 +119,14 @@ function Signup({socket}) {
 
         socket.emit("storedtoken", token)
 
-        axios.post("https://vtube.mohamedbrima.repl.co/vivid", datas).then(res => { 
+        axios.post("https://s4qtq5-3002.csb.app/vivid", datas).then(res => { 
           if(res.data.success === "success"){ 
             sessionStorage.clear()
           }
           else { 
             seterr("Error:" + res.data.success)
 
-            axios.post("https://vtube.mohamedbrima.repl.co/session/key", { 
+            axios.post("https://s4qtq5-3002.csb.app/session/key", { 
               keys: uuid()
             }).then(res =>{ 
               if(res.data.success === "success"){ 

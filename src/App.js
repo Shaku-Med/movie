@@ -11,8 +11,8 @@ import Audio from './Audio/Audio';
 import io from 'socket.io-client'
 import Nav from './Nav/Nav';
 import Owner from './Owner/Owner';
-
-let socket = new io("https://vtube.mohamedbrima.repl.co")
+// https://vtube.mohamedbrima.repl.co
+let socket = new io("https://s4qtq5-3002.csb.app")
 
 
 function App() {

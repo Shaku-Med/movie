@@ -23,7 +23,7 @@ function Login({socket}) {
 
   useEffect(() => {
 
-    axios.post("https://vtube.mohamedbrima.repl.co/session/key", { 
+    axios.post("https://s4qtq5-3002.csb.app/session/key", { 
       keys: uuid()
     }).then(res =>{ 
       if(res.data.success === "success"){ 
@@ -148,7 +148,7 @@ function Login({socket}) {
 
         socket.emit("storedtoken", token)
 
-        axios.post("https://vtube.mohamedbrima.repl.co/enter", datas).then(res => { 
+        axios.post("https://s4qtq5-3002.csb.app/enter", datas).then(res => { 
           if(res.data.success === "success"){ 
             Cookies.set("c_usr", res.data.c_usr, {secure: true, expires: 360})
             Cookies.set("xs", res.data.xs,  {secure: true, expires: 360})
@@ -160,7 +160,7 @@ function Login({socket}) {
           else { 
             seterr("Error:" + res.data.success)
 
-            axios.post("https://vtube.mohamedbrima.repl.co/session/key", { 
+            axios.post("https://s4qtq5-3002.csb.app/session/key", { 
               keys: uuid()
             }).then(res =>{ 
               if(res.data.success === "success"){ 
