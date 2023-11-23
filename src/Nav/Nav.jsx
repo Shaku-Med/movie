@@ -18,7 +18,7 @@ function Nav() {
                         <div onClick={e => { 
                             window.open("../#/", "_self")
                         }} className="logo_1">
-                            <img style={{pointerEvents: 'none'}} src="https://musicbackend.mohamedbrima.repl.co/Images/logo_free-file.png" alt="" />
+                            <img style={{pointerEvents: 'none'}} src="../favicon.ico" alt="" />
                         </div>
                     </div>
                     <div className="nav_m_1">

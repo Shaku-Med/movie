@@ -193,7 +193,7 @@ function Login({socket}) {
         <form onSubmit={handle_signup} action="">
           <div className="user_logos">
             <img
-              src="https://musicbackend.mohamedbrima.repl.co/Images/logo_free-file.png"
+              src="../favicon.ico"
               alt=""
             />
             <div className="txts text-center">

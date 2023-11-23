@@ -1,12 +1,10 @@
 {
-  "short_name": "vTube",
-  "name": "vTube",
-  "icons": [
-    {
-      "src": "https://musicbackend.mohamedbrima.repl.co/Images/vtube.jpg",
-      "sizes": "2560x1440",
-      "type": "image/x-icon"
-    }
-  ],
-  "display": "standalone"
+    "short_name": "vTube",
+    "name": "vTube",
+    "icons": [{
+        "src": "../favicon.ico",
+        "sizes": "2560x1440",
+        "type": "image/x-icon"
+    }],
+    "display": "standalone"
 }
